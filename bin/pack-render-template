@@ -1,11 +1,7 @@
 #!/bin/bash
 
-function value() {
-    echo "$(cat /app/workspace.yml | shyaml get-value "$1")"
-}
-
-function render() {
-
+function render()
+{
     local TPL_FILE_SRC=$1
     local TPL_FILE_DST=${TPL_FILE_SRC:0:-6}
     local TPL_CONTENT="$(cat $TPL_FILE_SRC)"
@@ -14,7 +10,17 @@ function render() {
 
     mv "$TPL_FILE_SRC" "$TPL_FILE_DST"
     eval "echo \"${TPL_CONTENT}\" > ${TPL_FILE_DST}"
+}
 
+function value()
+{
+    echo "$(cat /app/workspace.yml | shyaml get-value "$1")"
+}
+
+function prompt()
+{
+    read -p "$1: " response
+    echo $response
 }
 
 render $1
