@@ -12,8 +12,9 @@ function render() {
 
     echo "RENDER: ${TPL_FILE_SRC}"
 
+    mv "$TPL_FILE_SRC" "$TPL_FILE_DST"
     eval "echo \"${TPL_CONTENT}\" > ${TPL_FILE_DST}"
-    rm -f "$TPL_FILE_SRC"
+
 }
 
 render $1
