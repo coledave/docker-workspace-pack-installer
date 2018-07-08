@@ -1,0 +1,3 @@
+#!/bin/bash
+
+find /app -name \*.wstpl -exec pack-render-template $1 {} \;
